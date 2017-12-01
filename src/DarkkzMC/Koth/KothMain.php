@@ -1,6 +1,6 @@
 <?php
 
-namespace koth;
+namespace DarkkzMC\Koth;
 
 
 use pocketmine\Player;
