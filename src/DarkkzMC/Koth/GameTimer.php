@@ -3,9 +3,9 @@
 namespace DarkkzMC\Koth;
 
 
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 
-class GameTimer extends PluginTask{
+class GameTimer extends Task{
 
     private $plugin;
     private $arena;
@@ -13,14 +13,13 @@ class GameTimer extends PluginTask{
     private $time;
 
     public function __construct(KothMain $owner, KothArena $arena){
-        parent::__construct($owner);
         $this->plugin = $owner;
         $this->arena = $arena;
 
         $this->time = $owner->getData("game_time") * 60;
     }
 
-    public function onRun($currentTick){
+    public function onRun(int $currenttick){
         $time = $this->time--;
         if ($time < 1){
             $this->arena->endGame();
